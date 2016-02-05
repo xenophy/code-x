@@ -36,6 +36,7 @@ cd login
 sencha app build
 
 cd ../../
+oil r migrate --packages=auth
 oil refine setuptables:index
 
 
