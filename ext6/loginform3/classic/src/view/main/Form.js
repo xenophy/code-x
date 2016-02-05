@@ -111,7 +111,7 @@ Ext.define('Login.view.main.Form', {
                 name: 'username',
 
                 // emptyText
-                emptyText: '\uf007  メールアドレスまたはユーザーID'
+                emptyText: 'メールアドレスまたはユーザーID'
 
             }, {
 
@@ -122,7 +122,7 @@ Ext.define('Login.view.main.Form', {
                 inputType: 'password',
 
                 // emptyText
-                emptyText: '\uf023  パスワード'
+                emptyText: 'パスワード'
 
             }, {
 
