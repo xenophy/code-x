@@ -19,6 +19,7 @@ mkdir -p login/resources/images
 curl https://raw.githubusercontent.com/xenophy/code-x/master/ext6/loginform3/resources/images/logo.png > login/resources/images/logo.png
 mv front/index.html front/index.php
 mv login/index.html login/index.php
+sed -i -e "s/RewriteBase \/RewriteBase \/~$NAME\//" ../public_html/.htaccess
 cd login
-sencha app watch
+sencha app build
 
