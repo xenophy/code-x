@@ -20,7 +20,9 @@ curl https://raw.githubusercontent.com/xenophy/code-x/master/ext6/loginform4/cod
 curl https://raw.githubusercontent.com/xenophy/code-x/master/ext6/loginform4/fuel/app/config/routes.php > ../fuel/app/config/routes.php
 curl https://raw.githubusercontent.com/xenophy/code-x/master/ext6/loginform4/fuel/app/config/auth.php > ../fuel/app/config/auth.php
 curl https://raw.githubusercontent.com/xenophy/code-x/master/ext6/loginform4/fuel/app/config/config.php > ../fuel/app/config/config.php
+curl https://raw.githubusercontent.com/xenophy/code-x/master/ext6/loginform4/fuel/app/config/development/db.php > ../fuel/app/config/development/db.php
 curl https://raw.githubusercontent.com/xenophy/code-x/master/ext6/loginform4/fuel/app/classes/controller/welcome.php > ../fuel/app/classes/controller/welcome.php
+curl https://raw.githubusercontent.com/xenophy/code-x/master/ext6/loginform4/fuel/app/tasks/setuptables.php > ../fuel/app/tasks/setuptables.php
 
 curl https://raw.githubusercontent.com/xenophy/code-x/master/ext6/loginform4/codex/front/build.xml > front/build.xml
 curl https://raw.githubusercontent.com/xenophy/code-x/master/ext6/loginform4/codex/login/build.xml > login/build.xml
@@ -28,8 +30,12 @@ curl https://raw.githubusercontent.com/xenophy/code-x/master/ext6/loginform4/cod
 mkdir -p ../fuel/app/views/welcome/login/
 mv front/index.html front/index.php
 mv login/index.html login/index.php
-sed -i -e "s/RewriteBase \/RewriteBase \/~$NAME\//" ../public_html/.htaccess
-sed -i -e "s/RewriteCond %\{REQUEST_FILENAME\} !-d/#RewriteCond %\{REQUEST_FILENAME\} !-d/" ../public_html/.htaccess
+sed -i -e "s/#RewriteBase \/wherever\/fuel\/is/RewriteBase \/~$NAME\//" ../public_html/.htaccess
+sed -i -e "s/RewriteCond %{REQUEST_FILENAME} \!-d/#RewriteCond %{REQUEST_FILENAME} \!-d/" ../public_html/.htaccess
 cd login
 sencha app build
+
+cd ../../
+oil refine setuptables:index
+
 
