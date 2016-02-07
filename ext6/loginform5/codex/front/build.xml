@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="Front" default=".help">
+    <!--
+    The build-impl.xml file imported here contains the guts of the build process. It is
+    a great idea to read that file to understand how the process works, but it is best to
+    limit your changes to this file.
+    -->
+    <import file="${basedir}/.sencha/app/build-impl.xml"/>
+
+    <target name="-before-page">
+        <delete file="../../public_html/app.js"/>
+        <delete file="../../public_html/app.json"/>
+        <delete file="../../public_html/cache.appcache"/>
+        <delete file="../../public_html/index.html"/>
+        <delete file="../../public_html/classic.json"/>
+        <delete dir="../../public_html/archive" verbose="true"/>
+        <delete dir="../../public_html/classic" verbose="true"/>
+        <delete dir="../../public_html/resources" verbose="true"/>
+    </target>
+
+    <target name="-after-page">
+        <copy todir="../../public_html/archive/" >
+            <fileset dir="${workspace.build.dir}/${build.environment}/${app.name}/archive/" includes="**"/>
+        </copy>
+        <copy todir="../../public_html/classic/" >
+            <fileset dir="${workspace.build.dir}/${build.environment}/${app.name}/classic/" includes="**"/>
+        </copy>
+        <copy todir="../../public_html/resources/" >
+            <fileset dir="${workspace.build.dir}/${build.environment}/${app.name}/resources/" includes="**"/>
+        </copy>
+        <copy file="${workspace.build.dir}/${build.environment}/${app.name}/classic.json" todir="../../public_html/"/>
+        <copy file="${workspace.build.dir}/${build.environment}/${app.name}/modern.json" todir="../../public_html/"/>
+        <copy file="${workspace.build.dir}/${build.environment}/${app.name}/index.php" todir="../../fuel/app/views/welcome/"/>
+    </target>
+
+    <!--
+    The following targets can be provided to inject logic before and/or after key steps
+    of the build process:
+
+        The "init-local" target is used to initialize properties that may be personalized
+        for the local machine.
+
+            <target name="-before-init-local"/>
+            <target name="-after-init-local"/>
+
+        The "clean" target is used to clean build output from the build.dir.
+
+            <target name="-before-clean"/>
+            <target name="-after-clean"/>
+
+        The general "init" target is used to initialize all other properties, including
+        those provided by Sencha Cmd.
+
+            <target name="-before-init"/>
+            <target name="-after-init"/>
+        
+        The "page" target performs the call to Sencha Cmd to build the 'all-classes.js' file.
+
+            <target name="-before-page"/>
+            <target name="-after-page"/>
+
+        The "build" target performs the call to Sencha Cmd to build the application.
+
+            <target name="-before-build"/>
+            <target name="-after-build"/>
+    -->
+
+</project>
