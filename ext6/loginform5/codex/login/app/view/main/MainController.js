@@ -23,7 +23,36 @@ Ext.define('Login.view.main.MainController', {
     // {{{ onLogin
 
     onLogin: function () {
-         Ext.Msg.confirm('onLogin', 'onLoginフォームが呼び出されました。');
+
+        var me = this,
+            v;
+
+        v = me.getView().down('mainform').getForm().getValues();
+
+        Login.auth(v.username, v.password, function (result) {
+
+            if (result.success === true) {
+
+                if (location.port === 80 || location.port === 443) {
+
+                    // リダイレクト
+                    location.href = '../';
+
+                } else {
+
+                    // リダイレクト for Sencha Cmd
+                    location.href = '../front/index.php';
+
+                }
+
+            } else {
+
+                // TODO: エラーメッセージ表示
+
+            }
+
+        });
+
     }
 
     // }}}

@@ -213,6 +213,10 @@
      */
     "js": [
         {
+            "path": "http://localhost/~codex/direct/api",
+            "remote": true
+        },
+        {
             "path": "app.js",
             "bundle": true
         }
