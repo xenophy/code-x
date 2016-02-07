@@ -566,8 +566,7 @@
         },
 
         "modern": {
-            //"toolkit": "modern",
-            "toolkit": "classic",
+            "toolkit": "modern",
 
             "theme": "theme-triton",
 
