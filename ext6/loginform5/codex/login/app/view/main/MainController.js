@@ -33,7 +33,7 @@ Ext.define('Login.view.main.MainController', {
 
             if (result.success === true) {
 
-                if (location.port === 80 || location.port === 443) {
+                if (location.port === "" || location.port === 80 || location.port === 443) {
 
                     // リダイレクト
                     location.href = '../';

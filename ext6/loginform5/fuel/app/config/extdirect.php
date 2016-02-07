@@ -9,6 +9,7 @@
  * http://www.xenophy-entertainment.com
  */
 return array(
+    'url'               => '/~codex/direct',
     'route'             => 'direct',
     'classes_dirname'   => 'direct'
 );
