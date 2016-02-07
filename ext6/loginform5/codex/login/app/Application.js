@@ -38,6 +38,9 @@ Ext.define('Login.Application', {
 
     launch: function () {
 
+        // Ext.Directプロバイダー追加
+        Ext.direct.Manager.addProvider(Ext.REMOTING_API);
+
     },
 
     // }}}
