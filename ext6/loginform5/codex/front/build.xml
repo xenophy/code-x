@@ -7,28 +7,29 @@
     -->
     <import file="${basedir}/.sencha/app/build-impl.xml"/>
 
-    <target name="-before-page">
+    <target name="-before-build">
+    </target>
+
+    <target name="-after-build">
         <delete file="../../public_html/app.js"/>
         <delete file="../../public_html/app.json"/>
         <delete file="../../public_html/cache.appcache"/>
         <delete file="../../public_html/index.html"/>
-        <delete file="../../public_html/classic.json"/>
+        <delete file="../../public_html/${toolkit.name}.json"/>
         <delete dir="../../public_html/archive" verbose="true"/>
-        <delete dir="../../public_html/classic" verbose="true"/>
+        <delete dir="../../public_html/${toolkit.name}" verbose="true"/>
         <delete dir="../../public_html/resources" verbose="true"/>
-    </target>
 
-    <target name="-after-page">
         <copy todir="../../public_html/archive/" >
             <fileset dir="${workspace.build.dir}/${build.environment}/${app.name}/archive/" includes="**"/>
         </copy>
-        <copy todir="../../public_html/classic/" >
-            <fileset dir="${workspace.build.dir}/${build.environment}/${app.name}/classic/" includes="**"/>
+        <copy todir="../../public_html/${toolkit.name}/" >
+            <fileset dir="${workspace.build.dir}/${build.environment}/${app.name}/${toolkit.name}/" includes="**"/>
         </copy>
         <copy todir="../../public_html/resources/" >
             <fileset dir="${workspace.build.dir}/${build.environment}/${app.name}/resources/" includes="**"/>
         </copy>
-        <copy file="${workspace.build.dir}/${build.environment}/${app.name}/classic.json" todir="../../public_html/"/>
+        <copy file="${workspace.build.dir}/${build.environment}/${app.name}/${toolkit.name}.json" todir="../../public_html/"/>
         <copy file="${workspace.build.dir}/${build.environment}/${app.name}/index.php" todir="../../fuel/app/views/welcome/"/>
     </target>
 
